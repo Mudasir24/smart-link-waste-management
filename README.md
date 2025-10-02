@@ -57,3 +57,7 @@ India’s rapidly urbanizing cities face challenges in civic cleanliness. Tradit
 ## 📜 License
 MIT License © 2025 Team Smart Link
 
+
+## 📜 License
+This project is licensed under the [MIT License](LICENSE).
+

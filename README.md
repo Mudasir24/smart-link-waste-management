@@ -53,3 +53,7 @@ India’s rapidly urbanizing cities face challenges in civic cleanliness. Tradit
 - **Location Service** → GPS-based officer validation.  
 
 ---
+
+## 📜 License
+MIT License © 2025 Team Smart Link
+

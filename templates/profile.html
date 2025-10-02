@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+
+{% block title %}Your Profile{% endblock %}
+
+{% block main %}
+<div class="bg-white shadow rounded-lg p-6 max-w-4xl mx-auto">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">User Profile</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Profile Image -->
+        {% set bg_colors = ['bg-pink-100', 'bg-green-100', 'bg-blue-100', 'bg-yellow-100', 'bg-purple-100'] %}
+        {% set text_colors = ['text-pink-700', 'text-green-700', 'text-blue-700', 'text-yellow-700', 'text-purple-700'] %}
+        {% set parts = user["username"].strip().split() %}
+        {% set initials = (parts[0][0] ~ (parts[1][0] if parts|length > 1 else '')) | upper %}
+        {% set color_index = loop.index0 % bg_colors|length if loop is defined else 0 %}
+        {% set bg_color = bg_colors[color_index] %}
+        {% set text_color = text_colors[color_index] %}
+
+        <div class="flex flex-col items-center">
+            <div class="h-32 w-32 rounded-full {{ bg_color }} flex items-center justify-center {{ text_color }} text-3xl font-semibold shadow-md">
+                {{ initials }}
+            </div>
+            <h3 class="mt-4 text-xl font-semibold text-gray-700">{{ user.username }}</h3>
+            <p class="text-sm text-gray-500">{{ user.email }}</p>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-emerald-600">User Id</label>
+                <p class="text-gray-800">{{ user.id }}</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-emerald-600">Username Name</label>
+                <p class="text-gray-800">{{ user.username }}</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-emerald-600">Email</label>
+                <p class="text-gray-800">{{ user.email }}</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-emerald-600">Phone</label>
+                <p class="text-gray-800">{{ user.mobile_no }}</p>
+            </div>
+        </div>
+        <div class="bg-white p-6 rounded-lg shadow max-w-sm mx-auto mt-6">
+    <h3 class="text-lg font-semibold text-gray-700 text-center mb-4">Your Complaint Summary</h3>
+    <canvas id="complaintChart" class="mx-auto"></canvas>
+    <p class="text-center text-sm text-gray-600 mt-2">
+        {{ user.completed_complaints }} of {{ user.total_complaints }} completed
+    </p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const completed = {{ user.completed_complaints }};
+    const total = {{ user.total_complaints }};
+    const pending = total - completed;
+
+    const ctx = document.getElementById('complaintChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Completed', 'Pending'],
+            datasets: [{
+                data: [completed, pending],
+                backgroundColor: [
+                    'rgb(16, 185, 129)',   // emerald-500
+                    'rgb(251, 191, 36)'    // amber-400
+                ],
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{% block title %}About Us{% endblock %}
+{% block main %}
+<style>
+    /* Keep existing styles */
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    h2 {
+      color: #34495e;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid  #80ffcc;
+      padding-bottom: 5px;
+      font-size: 1.5rem;
+    }
+    p, ul {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    ul li {
+      margin-bottom: 10px;
+    }
+    .join-us {
+      background-color:  #80ffcc;
+      color: black;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      font-weight: 600;
+      margin-top: 40px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+  <h1>About Us</h1>
+
+  <h2>Our Mission:</h2>
+  <p>We believe that clean streets are a basic right, not a luxury. Our mission is to create garbage-free neighborhoods by enabling citizens to report waste in public areas and holding municipal services accountable for timely clean-up.</p>
+
+  <h2>What We Do:</h2>
+  <p>This platform allows citizens to easily upload photos of garbage-filled streets, which are then reviewed by our AI system. If garbage is detected, a cleaning request is automatically forwarded to the local municipality. After cleanup, a follow-up image is uploaded and verified by AI to ensure the job was completed.</p>
+
+  <h2>Why It Matters:</h2>
+  <p>Unclean streets aren’t just an eyesore — they contribute to health hazards, pollution, and community neglect. With your help, we’re using technology to make a real difference, one street at a time.</p>
+
+  <h2>How It Works:</h2>
+  <ul>
+    <li>Citizens report by uploading a photo with location.</li>
+    <li>AI confirms presence of garbage → ticket is created.</li>
+    <li>Municipality is notified and cleans the area.</li>
+    <li>Cleanup photo is uploaded and verified.</li>
+    <li>Ticket is closed and visible on the public dashboard.</li>
+  </ul>
+
+  <div class="join-us">
+    <p>Whether you're a concerned citizen or a municipal partner, your participation brings us closer to cleaner, healthier communities.</p>
+  </div>
+
+{% endblock %}
+

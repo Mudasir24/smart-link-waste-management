@@ -1,0 +1,83 @@
+.flash-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 100%;
+            max-width: 400px;
+            z-index: 9999;
+        }
+        
+        .flash-message {
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            transform: translateX(120%);
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+        }
+        
+        .flash-message.show {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .flash-message.hide {
+            transform: translateX(120%);
+            opacity: 0;
+        }
+        
+        .flash-content {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+        }
+        
+        .flash-icon {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+        
+        .flash-text {
+            flex-grow: 1;
+        }
+        
+        .flash-progress {
+            height: 4px;
+            width: 100%;
+            transform-origin: left;
+        }
+        
+        .flash-close {
+            flex-shrink: 0;
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+        
+        .flash-close:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
